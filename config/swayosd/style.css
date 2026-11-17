@@ -1,0 +1,42 @@
+/* ────────────── SwayOSD Glassmorphism Theme ────────────── */
+
+window {
+    background: transparent;
+}
+
+#container {
+    background: rgba(18, 20, 32, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    padding: 12px 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+image, label {
+    color: #c0caf5;
+}
+
+progressbar:disabled,
+image:disabled {
+    opacity: 0.5;
+}
+
+progressbar {
+    min-height: 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+}
+
+trough {
+    min-height: 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+progress {
+    min-height: 6px;
+    border-radius: 4px;
+    background: #7aa2f7;
+}

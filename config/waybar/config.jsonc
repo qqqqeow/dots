@@ -1,0 +1,109 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "margin-top": 4,
+    "margin-bottom": 0,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 6,
+
+    "modules-left": [
+        "custom/launcher",
+        "niri/workspaces",
+        "niri/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "battery",
+        "tray",
+        "custom/controlcenter"
+    ],
+
+    // Вызов лаунчера Fuzzel
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+
+    // Воркспейсы Niri
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "󰮯",
+            "default": "󰊠"
+        }
+    },
+
+    // Название активного окна
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 28,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) - Discord": "󰙯 $1",
+            "(.*) - Alacritty": " $1",
+            "(.*) - Steam": "󰓓 $1"
+        }
+    },
+
+    // Часы и дата
+    "clock": {
+        "interval": 1,
+        "format": "󰥔 {:%H:%M}",
+        "format-alt": "󰃭 {:%d %B, %A}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    // Звук
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 3,
+        "on-click": "swayosd-client --output-volume mute-toggle",
+        "on-click-right": "pavucontrol"
+    },
+
+    // Сеть
+    "network": {
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 Wired",
+        "format-linked": "󰈀 No IP",
+        "format-disconnected": "󰤭 Off",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "on-click": "swaync-client -t -sw"
+    },
+
+    // Батарея
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
+    },
+
+    // Системный трей
+    "tray": {
+        "icon-size": 13,
+        "spacing": 6
+    },
+
+    // Кнопка открытия центра управления / уведомлений SwayNC
+    "custom/controlcenter": {
+        "format": "󰂚",
+        "tooltip": false,
+        "on-click": "swaync-client -t -sw"
+    }
+}

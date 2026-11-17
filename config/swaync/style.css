@@ -1,0 +1,196 @@
+/* ────────────── SwayNC Glassmorphism Theme ────────────── */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-weight: 500;
+}
+
+.control-center {
+    background: rgba(18, 20, 32, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    color: #c0caf5;
+}
+
+/* ─── Заголовок и кнопка Очистить ─── */
+.widget-title {
+    color: #c0caf5;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.widget-title button {
+    background: rgba(255, 255, 255, 0.08);
+    color: #a9b1d6;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+}
+
+.widget-title button:hover {
+    background: rgba(247, 118, 142, 0.25);
+    color: #f7768e;
+    border-color: rgba(247, 118, 142, 0.5);
+}
+
+/* ─── Режим "Не беспокоить" (DND) ─── */
+.widget-dnd {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 6px 0;
+    padding: 6px 12px;
+}
+
+.widget-dnd > switch {
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.widget-dnd > switch:checked {
+    background: #7aa2f7;
+}
+
+.widget-dnd > switch slider {
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+/* ─── Слайдеры звука и яркости ─── */
+.widget-volume,
+.widget-backlight {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 6px 0;
+    padding: 8px 12px;
+}
+
+.widget-volume label,
+.widget-backlight label {
+    font-size: 14px;
+    color: #7aa2f7;
+    margin-right: 8px;
+}
+
+scale trough {
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    min-height: 8px;
+}
+
+scale highlight {
+    border-radius: 6px;
+    background: #7aa2f7;
+    min-height: 8px;
+}
+
+scale slider {
+    background: #ffffff;
+    border-radius: 50%;
+    min-width: 14px;
+    min-height: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Сетка быстрых действий (Buttons Grid) ─── */
+.widget-buttons-grid {
+    margin: 8px 0;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background: rgba(255, 255, 255, 0.06);
+    color: #c0caf5;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+    background: rgba(122, 162, 247, 0.25);
+    border-color: rgba(122, 162, 247, 0.6);
+    color: #7aa2f7;
+}
+
+/* ─── Виджет плеера (MPRIS) ─── */
+.widget-mpris {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 8px 0;
+    padding: 10px;
+}
+
+.widget-mpris-player {
+    padding: 6px;
+}
+
+.widget-mpris-title {
+    font-weight: bold;
+    font-size: 13px;
+    color: #c0caf5;
+}
+
+.widget-mpris-subtitle {
+    font-size: 11px;
+    color: #7aa2f7;
+}
+
+/* ─── Всплывающие уведомления ─── */
+.notification-row {
+    outline: none;
+    margin: 6px 0;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+    opacity: 0.95;
+}
+
+.notification {
+    background: rgba(26, 29, 44, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.notification-content {
+    margin: 4px;
+}
+
+.summary {
+    font-size: 12px;
+    font-weight: bold;
+    color: #c0caf5;
+}
+
+.body {
+    font-size: 11px;
+    color: #a9b1d6;
+}
+
+.time {
+    font-size: 10px;
+    color: #565f89;
+    margin-right: 4px;
+}
+
+.close-button {
+    background: rgba(255, 255, 255, 0.08);
+    color: #a9b1d6;
+    border-radius: 8px;
+    padding: 2px 6px;
+}
+
+.close-button:hover {
+    background: rgba(247, 118, 142, 0.3);
+    color: #f7768e;
+}
