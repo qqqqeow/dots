@@ -63,11 +63,11 @@
       "actions": [
         {
           "label": "󰤨 Wi-Fi",
-          "command": "alacritty -e nmtui"
+          "command": "kitty -e nmtui"
         },
         {
           "label": "󰂯 Bluetooth",
-          "command": "alacritty -e bluetoothctl"
+          "command": "kitty -e bluetoothctl"
         },
         {
           "label": "󰌌 Буфер",

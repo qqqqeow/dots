@@ -5,7 +5,13 @@ fuzzel
 swayosd
 awww
 matugen
-alacritty
+kitty
+playerctl
+mpvpaper
+btop
+jq
+curl
+libnotify
 pavucontrol
 wireplumber
 pipewire

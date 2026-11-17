@@ -6,7 +6,7 @@
 
 set -e
 
-# Цвета для красивого вывода
+# Цвета для вывода
 BOLD="\033[1m"
 GREEN="\033[0;32m"
 BLUE="\033[0;34m"
@@ -20,8 +20,8 @@ BACKUP_DIR="${HOME}/.config/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 
 echo -e "${CYAN}${BOLD}"
 echo "  ╔══════════════════════════════════════════════════════════╗"
-echo "  ║        Niri Desktop Environment Installer (v1.0)        ║"
-echo "  ║       Glassmorphism • Clean • Modular • No Noctalia      ║"
+echo "  ║        Niri Desktop Environment Installer (v1.1)        ║"
+echo "  ║   Glassmorphism • Kitty • Wallhaven • No Noctalia        ║"
 echo "  ╚══════════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 
@@ -49,7 +49,7 @@ fi
 
 # 2. Очистка и бэкап старых конфигураций
 echo -e "\n${BLUE}[2/5] Резервное копирование существующих конфигураций...${NC}"
-CONFIGS=("niri" "waybar" "swaync" "fuzzel" "swayosd" "noctalia")
+CONFIGS=("niri" "waybar" "swaync" "fuzzel" "swayosd" "kitty" "noctalia")
 BACKUP_CREATED=false
 
 for cfg in "${CONFIGS[@]}"; do
@@ -90,15 +90,18 @@ done
 echo -e "${GREEN}  ✓ Конфигурации успешно связаны.${NC}"
 
 # 4. Настройка обоев и прав на скрипты
-echo -e "\n${BLUE}[4/5] Подготовка обоев и скриптов...${NC}"
-mkdir -p "${HOME}/Изображения/wallpapers"
+echo -e "\n${BLUE}[4/5] Подготовка каталогов обоев и скриптов...${NC}"
+mkdir -p "${HOME}/Изображения/wallpapers/videos"
+mkdir -p "${HOME}/Изображения/wallpapers/wallhaven"
+
 if [ -d "${DOTFILES_DIR}/wallpapers" ]; then
     cp -r "${DOTFILES_DIR}/wallpapers"/* "${HOME}/Изображения/wallpapers/" 2>/dev/null || true
-    echo -e "${GREEN}  ✓ Обои скопированы в ~/Изображения/wallpapers${NC}"
+    echo -e "${GREEN}  ✓ Базовые обои скопированы в ~/Изображения/wallpapers${NC}"
 fi
 
 # Делаем скрипты исполняемыми
 find "${DOTFILES_DIR}" -type f -name "*.sh" -exec chmod +x {} +
+find "${DOTFILES_DIR}" -type f -name "*.py" -exec chmod +x {} +
 echo -e "${GREEN}  ✓ Права на запуск скриптов установлены.${NC}"
 
 # Включение аудиосервисов pipewire
@@ -119,15 +122,24 @@ echo -e "\n${CYAN}════════════════════�
 echo -e "${GREEN}${BOLD}  УСТАНОВКА УСПЕШНО ЗАВЕРШЕНА!${NC}"
 echo -e "${CYAN}══════════════════════════════════════════════════════════════${NC}"
 echo -e "\n${BOLD}Основные горячие клавиши:${NC}"
-echo -e "  • ${BOLD}Mod + Enter${NC}       - Терминал (Alacritty)"
-echo -e "  • ${BOLD}Mod + Space${NC}       - Меню приложений (Fuzzel)"
-echo -e "  • ${BOLD}Mod + N${NC}           - Центр управления и уведомления (SwayNC)"
-echo -e "  • ${BOLD}Mod + V${NC}           - История буфера обмена (Cliphist)"
-echo -e "  • ${BOLD}Mod + Q${NC}           - Закрыть активное окно"
-echo -e "  • ${BOLD}Mod + H / J / K / L${NC}- Навигация по колонкам ленты"
-echo -e "  • ${BOLD}Mod + R${NC}           - Переключение ширины колонки (33% / 50% / 66%)"
-echo -e "  • ${BOLD}Print${NC}             - Скриншот области в буфер"
-echo -e "  • ${BOLD}Mod + Shift + E${NC}   - Выход из Niri"
+echo -e "  • ${BOLD}Mod + Enter${NC}          - Терминал Kitty (акриловое стекло)"
+echo -e "  • ${BOLD}Mod + Space${NC}          - Меню приложений (Fuzzel)"
+echo -e "  • ${BOLD}Mod + N${NC}              - Центр управления и уведомления (SwayNC)"
+echo -e "  • ${BOLD}Mod + V${NC}              - История буфера обмена (Cliphist)"
+echo -e "  • ${BOLD}Mod + W${NC}              - Меню обоев (Случайные / Wallhaven / Видео)"
+echo -e "  • ${BOLD}Mod + Shift + W${NC}      - Следующие случайные обои с плавной анимацией"
+echo -e "  • ${BOLD}Mod + Стрелки (←↑→↓)${NC}  - Навигация по окнам, колонкам и мониторам"
+echo -e "  • ${BOLD}Mod + 1 .. 5${NC}         - Переключение рабочих столов"
+echo -e "  • ${BOLD}Mod + [ / ]${NC}          - Переключение между экранами/мониторами"
+echo -e "  • ${BOLD}Mod + Q${NC}              - Закрыть активное окно"
+echo -e "  • ${BOLD}Mod + R${NC}              - Переключение ширины колонки (33% / 50% / 66%)"
+echo -e "  • ${BOLD}Print${NC}                - Скриншот области в буфер"
+echo -e "  • ${BOLD}Mod + Shift + E${NC}      - Выход из Niri"
+echo -e "\n${BOLD}Панель Waybar сверху:${NC}"
+echo -e "  • ${CYAN}Воркспейсы (1, 2, 3...)${NC}: клик для перехода, скролл колесиком"
+echo -e "  • ${CYAN}Музыка (MPRIS)${NC}: клик по названию — Pause/Play, правый клик — Next"
+echo -e "  • ${CYAN}Котик (Catwalk)${NC}: бежит быстрее при нагрузке CPU, клик открывает btop"
+echo -e "  • ${CYAN}Уведомления (󰂚)${NC}: клик открывает шторку Control Center"
 echo -e "\n${BOLD}Как запустить:${NC}"
 echo -e "  • Если вы в TTY консоли: ${BOLD}niri-session${NC}"
 echo -e "  • Если в дисплейном менеджере (SDDM/GDM): выберите сессию ${BOLD}Niri${NC}"

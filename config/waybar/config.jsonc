@@ -14,14 +14,16 @@
         "niri/window"
     ],
     "modules-center": [
-        "clock"
+        "mpris",
+        "clock",
+        "custom/catwalk"
     ],
     "modules-right": [
         "pulseaudio",
         "network",
         "battery",
         "tray",
-        "custom/controlcenter"
+        "custom/notification"
     ],
 
     // Вызов лаунчера Fuzzel
@@ -31,26 +33,50 @@
         "on-click": "fuzzel"
     },
 
-    // Воркспейсы Niri
+    // Воркспейсы Niri (кликабельные, с поддержкой колесика мыши)
     "niri/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "active": "󰮯",
-            "default": "󰊠"
-        }
+        "format": "{index}",
+        "disable-click": false,
+        "enable-bar-scroll": true,
+        "all-outputs": true
     },
 
     // Название активного окна
     "niri/window": {
         "format": "{title}",
-        "max-length": 28,
+        "max-length": 25,
         "separate-outputs": true,
         "rewrite": {
             "(.*) — Mozilla Firefox": "󰈹 $1",
             "(.*) - Discord": "󰙯 $1",
-            "(.*) - Alacritty": " $1",
+            "(.*) - Kitty": " $1",
             "(.*) - Steam": "󰓓 $1"
         }
+    },
+
+    // Музыкальный плеер MPRIS с управлением по клику
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "dynamic-order": ["title", "artist"],
+        "dynamic-separator": " • ",
+        "max-length": 30,
+        "player-icons": {
+            "default": "󰎆",
+            "spotify": "󰓇",
+            "firefox": "󰈹",
+            "chromium": "󰊯",
+            "mpv": "󰎇"
+        },
+        "status-icons": {
+            "paused": "󰏤"
+        },
+        "on-click": "play-pause",
+        "on-click-right": "next",
+        "on-click-middle": "previous",
+        "on-scroll-up": "next",
+        "on-scroll-down": "previous",
+        "tooltip-format": "{player} ({status}): {title} - {artist} [{position}/{length}]"
     },
 
     // Часы и дата
@@ -59,6 +85,15 @@
         "format": "󰥔 {:%H:%M}",
         "format-alt": "󰃭 {:%d %B, %A}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    // Анимированный котик Catwalk (отслеживает загрузку CPU)
+    "custom/catwalk": {
+        "exec": "~/.config/waybar/scripts/catwalk.py",
+        "return-type": "json",
+        "interval": 1,
+        "format": "{}",
+        "on-click": "kitty -e btop"
     },
 
     // Звук
@@ -73,7 +108,7 @@
         "on-click-right": "pavucontrol"
     },
 
-    // Сеть
+    // Интернет и сеть
     "network": {
         "format-wifi": "󰤨 {essid}",
         "format-ethernet": "󰈀 Wired",
@@ -100,10 +135,25 @@
         "spacing": 6
     },
 
-    // Кнопка открытия центра управления / уведомлений SwayNC
-    "custom/controlcenter": {
-        "format": "󰂚",
+    // Центр управления и уведомления SwayNC со счетчиком
+    "custom/notification": {
         "tooltip": false,
-        "on-click": "swaync-client -t -sw"
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󱅫",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }
